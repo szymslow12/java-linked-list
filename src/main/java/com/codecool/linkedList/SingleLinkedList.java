@@ -26,6 +26,21 @@ public class SingleLinkedList<T> {
         last = node;
     }
 
+    public void remove(T data) {
+        SingleLinkedNode<T> currentNode = head;
+        SingleLinkedNode<T> nodeBeforeCurrent = head;
+        boolean dataHasNoMatch = true;
+        while (dataHasNoMatch) {
+            if (currentNode.getData().equals(data)) {
+                nodeBeforeCurrent.setNextNode(currentNode.getNextNode());
+                dataHasNoMatch = false;
+            } else {
+                nodeBeforeCurrent = currentNode;
+                currentNode = currentNode.getNextNode();
+            }
+        }
+    }
+
     public String toString() {
         StringBuilder sB = new StringBuilder(head.toString());
         SingleLinkedNode<T> current = head;
