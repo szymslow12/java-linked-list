@@ -13,7 +13,17 @@ public class DoubleLinkedList<T> {
     }
 
     public void add(T data) {
+        DoubleLinkedNode<T> node = new DoubleLinkedNode<>(data, length++);
 
+        if (head == null) {
+            head = node;
+            last = node;
+            head.setPreviousNode(null);
+            return;
+        }
+        node.setPreviousNode(last);
+        last.setNextNode(node);
+        last = node;
     }
 
     public void remove(T data) {
@@ -25,10 +35,22 @@ public class DoubleLinkedList<T> {
     }
 
     public T get(int index) {
-
+        return head.getData();
     }
 
     public int length() {
         return length;
+    }
+
+    public String toString() {
+        StringBuilder sB = new StringBuilder(head.toString());
+        DoubleLinkedNode<T> current = head;
+
+        while(current.getNextNode() != null) {
+            sB.append(String.format(" %s", current.getNextNode().toString()));
+            current = current.getNextNode();
+        }
+
+        return sB.toString();
     }
 }
