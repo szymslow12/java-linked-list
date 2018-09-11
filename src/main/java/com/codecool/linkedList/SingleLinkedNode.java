@@ -7,6 +7,7 @@ public class SingleLinkedNode<T> {
 
     public SingleLinkedNode(T data) {
         this.data = data;
+        nextNode = null;
     }
 
     public T getData() {
