@@ -54,5 +54,16 @@ class SingleLinkedListTest {
 
 
     @Test
+    void testRemoveMultipleItemsFromMiddle() {
+        SingleLinkedList<Integer> integerList = getIntegerList();
 
+        String expected = "0 1 2 4 5 6 7 9";
+
+        integerList.remove(3);
+        integerList.remove(8);
+
+        String actual = integerList.toString();
+
+        assertEquals(expected, actual);
+    }
 }
