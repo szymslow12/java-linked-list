@@ -71,13 +71,17 @@ public class DoubleLinkedList<T> {
         DoubleLinkedNode<T> previousNode = currentNode.getPreviousNode();
         newNode.setNextNode(currentNode);
         newNode.setPreviousNode(previousNode);
+        setPreviousNode(previousNode, newNode);
+        currentNode.setPreviousNode(newNode);
+        incrementIndexes(currentNode);
+    }
+
+    private void setPreviousNode(DoubleLinkedNode<T> previousNode, DoubleLinkedNode<T> newNode) {
         if (previousNode != null) {
             previousNode.setNextNode(newNode);
         } else {
             head = newNode;
         }
-        currentNode.setPreviousNode(newNode);
-        incrementIndexes(currentNode);
     }
 
     private DoubleLinkedNode<T> getNodeByIndex(int index) {
