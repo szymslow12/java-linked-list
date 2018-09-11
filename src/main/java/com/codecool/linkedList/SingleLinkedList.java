@@ -60,20 +60,12 @@ public class SingleLinkedList<T> {
 
 
     public void insert(int index, T data) {
-//        SingleLinkedNode<T> currentNode = head;
         SingleLinkedNode<T> newNode = new SingleLinkedNode<>(data);
         SingleLinkedNode<T> currentNode = getNodeByIndex(index);
-
         newNode.setNextNode(currentNode);
         newNode.setIndex(index);
-        getNodeByIndex(index - 1).setNextNode(newNode);
+        changePointerOfPreviousNodeWithGivenIndex(index - 1, newNode);
         incrementIndexes(currentNode);
-        /*while (currentNode != null) {
-            if (currentNode.getIndex() == index) {
-                newNode.setNextNode(currentNode);
-            }
-            currentNode = currentNode.getNextNode();
-        }*/
     }
 
     private SingleLinkedNode<T> getNodeByIndex(int index) {
@@ -92,6 +84,15 @@ public class SingleLinkedList<T> {
         while (node != null) {
             node.setIndex(node.getIndex() + 1);
             node = node.getNextNode();
+        }
+    }
+
+    private void changePointerOfPreviousNodeWithGivenIndex(int index, SingleLinkedNode<T> newPointer) {
+        SingleLinkedNode<T> previousNode = getNodeByIndex(index);
+        if (previousNode == null) {
+            head = newPointer;
+        } else {
+            previousNode.setNextNode(newPointer);
         }
     }
 
