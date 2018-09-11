@@ -27,17 +27,19 @@ public class SingleLinkedList<T> {
     }
 
     public void remove(T data) {
+        if (head == null) return;
+        if (head.getData().equals(data)) {
+            head = head.getNextNode();
+        }
         SingleLinkedNode<T> currentNode = head;
-        SingleLinkedNode<T> nodeBeforeCurrent = head;
-        boolean dataHasNoMatch = true;
-        while (dataHasNoMatch) {
-            if (currentNode.getData().equals(data)) {
-                nodeBeforeCurrent.setNextNode(currentNode.getNextNode());
-                dataHasNoMatch = false;
-            } else {
-                nodeBeforeCurrent = currentNode;
-                currentNode = currentNode.getNextNode();
+
+        while (currentNode.getNextNode() != null) {
+            SingleLinkedNode<T> nextNode = currentNode.getNextNode();
+            if (nextNode.getData().equals(data)) {
+                currentNode.setNextNode(nextNode.getNextNode());
+                return;
             }
+            currentNode = nextNode;
         }
     }
 
