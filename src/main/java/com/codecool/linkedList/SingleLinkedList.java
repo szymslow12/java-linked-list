@@ -91,7 +91,6 @@ public class SingleLinkedList<T> {
             node.setIndex(node.getIndex() + 1);
             node = node.getNextNode();
         }
-        print();
     }
 
     private void decrementIndexes(SingleLinkedNode<T> node) {
@@ -99,7 +98,6 @@ public class SingleLinkedList<T> {
             node.setIndex(node.getIndex() - 1);
             node = node.getNextNode();
         }
-        print();
     }
 
     private void changePointerOfPreviousNodeWithGivenIndex(int index, SingleLinkedNode<T> newPointer) {
