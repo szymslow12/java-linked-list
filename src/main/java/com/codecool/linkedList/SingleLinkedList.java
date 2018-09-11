@@ -24,6 +24,7 @@ public class SingleLinkedList<T> {
 
         last.setNextNode(node);
         last = node;
+        length++;
     }
 
     public void remove(T data) {
