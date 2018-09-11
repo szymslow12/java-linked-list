@@ -37,6 +37,39 @@ class SingleLinkedListTest {
 
 
     @Test
+    void testHead() {
+        SingleLinkedList<Integer> integerList = getIntegerList();
+
+        Integer expected = 0;
+        Integer actual = integerList.get(0);
+
+        assertEquals(expected, actual);
+    }
+
+
+    @Test
+    void testGetItemWithIndex5() {
+        SingleLinkedList<Integer> integerList = getIntegerList();
+
+        Integer expected = 5;
+        Integer actual = integerList.get(5);
+
+        assertEquals(expected, actual);
+    }
+
+
+    @Test
+    void testGetLastItem() {
+        SingleLinkedList<Integer> integerList = getIntegerList();
+
+        Integer expected = 9;
+        Integer actual = integerList.get(integerList.length() - 1);
+
+        assertEquals(expected, actual);
+    }
+
+
+    @Test
     void testRemoveFirstItem() {
         SingleLinkedList<Integer> integerList = getIntegerList();
 
