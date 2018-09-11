@@ -10,6 +10,7 @@ public class DoubleLinkedNode<T> {
     public DoubleLinkedNode(T data, int index) {
         this.data = data;
         this.index = index;
+        nextNode = null;
     }
 
     public DoubleLinkedNode<T> getNextNode() {
