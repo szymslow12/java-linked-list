@@ -43,6 +43,19 @@ public class SingleLinkedList<T> {
         }
     }
 
+
+    public T get(int index) {
+        SingleLinkedNode<T> currentNode = head;
+
+        while (currentNode != null) {
+            if (currentNode.getIndex() == index) {
+                return currentNode.getData();
+            }
+            currentNode = currentNode.getNextNode();
+        }
+        return null;
+    }
+
     public String toString() {
         StringBuilder sB = new StringBuilder(head.toString());
         SingleLinkedNode<T> current = head;
