@@ -54,4 +54,8 @@ public class SingleLinkedList<T> {
 
         return sB.toString();
     }
+
+    public int length() {
+        return length;
+    }
 }
