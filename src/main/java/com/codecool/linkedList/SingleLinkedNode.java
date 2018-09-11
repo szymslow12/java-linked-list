@@ -1,11 +1,11 @@
 package com.codecool.linkedList;
 
-public class Node<T> {
+public class SingleLinkedNode<T> {
 
     private T data;
-    private Node<T> nextNode;
+    private SingleLinkedNode<T> nextNode;
 
-    public Node(T data) {
+    public SingleLinkedNode(T data) {
         this.data = data;
     }
 
@@ -17,11 +17,11 @@ public class Node<T> {
         this.data = data;
     }
 
-    public void setNextNode(Node<T> node) {
+    public void setNextNode(SingleLinkedNode<T> node) {
         nextNode = node;
     }
 
-    public Node<T> getNextNode() {
+    public SingleLinkedNode<T> getNextNode() {
         return nextNode;
     }
 }
