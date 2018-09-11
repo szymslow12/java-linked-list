@@ -25,4 +25,8 @@ public class SingleLinkedNode<T> {
     public SingleLinkedNode<T> getNextNode() {
         return nextNode;
     }
+
+    public String toString() {
+        return data.toString();
+    }
 }
