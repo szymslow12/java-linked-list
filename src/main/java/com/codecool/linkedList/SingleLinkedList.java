@@ -1,7 +1,5 @@
 package com.codecool.linkedList;
 
-import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader;
-
 public class SingleLinkedList<T> {
 
     private SingleLinkedNode<T> head;
@@ -69,13 +67,13 @@ public class SingleLinkedList<T> {
     }
 
     private SingleLinkedNode<T> getNodeByIndex(int index) {
-        SingleLinkedNode<T> curentNode = head;
+        SingleLinkedNode<T> currentNode = head;
 
-        while (curentNode != null) {
-            if (curentNode.getIndex() == index) {
-                return curentNode;
+        while (currentNode != null) {
+            if (currentNode.getIndex() == index) {
+                return currentNode;
             }
-            curentNode = curentNode.getNextNode();
+            currentNode = currentNode.getNextNode();
         }
         return null;
     }
