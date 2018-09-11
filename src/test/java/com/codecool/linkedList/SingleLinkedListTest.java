@@ -28,9 +28,8 @@ class SingleLinkedListTest {
     void testListLength() {
         SingleLinkedList<Integer> integerList = getIntegerList();
 
-        int expected = 10;
-
-        int actual = integerList.length();
+        Integer expected = 10;
+        Integer actual = integerList.length();
 
         assertEquals(expected, actual);
     }
@@ -73,10 +72,9 @@ class SingleLinkedListTest {
     void testRemoveFirstItem() {
         SingleLinkedList<Integer> integerList = getIntegerList();
 
-        String expected = "1 2 3 4 5 6 7 8 9";
-
         integerList.remove(0);
 
+        String expected = "1 2 3 4 5 6 7 8 9";
         String actual = integerList.toString();
 
         assertEquals(expected, actual);
@@ -87,10 +85,9 @@ class SingleLinkedListTest {
     void testRemoveLastItem() {
         SingleLinkedList<Integer> integerList = getIntegerList();
 
-        String expected = "0 1 2 3 4 5 6 7 8";
-
         integerList.remove(9);
 
+        String expected = "0 1 2 3 4 5 6 7 8";
         String actual = integerList.toString();
 
         assertEquals(expected, actual);
@@ -101,11 +98,22 @@ class SingleLinkedListTest {
     void testRemoveMultipleItemsFromMiddle() {
         SingleLinkedList<Integer> integerList = getIntegerList();
 
-        String expected = "0 1 2 4 5 6 7 9";
-
         integerList.remove(3);
         integerList.remove(8);
 
+        String expected = "0 1 2 4 5 6 7 9";
+        String actual = integerList.toString();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void testInsertOnBeginningOfList() {
+        SingleLinkedList<Integer> integerList = getIntegerList();
+
+        integerList.insert(0, 123);
+
+        String expected = "123 0 1 2 3 4 5 6 7 8 9";
         String actual = integerList.toString();
 
         assertEquals(expected, actual);
