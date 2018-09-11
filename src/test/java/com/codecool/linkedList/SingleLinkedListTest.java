@@ -143,4 +143,16 @@ class SingleLinkedListTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    void testInsertItemOnIndexBiggerThanListSize() {
+        SingleLinkedList<Integer> integerList = getIntegerList();
+
+        integerList.insert(15, 123);
+
+        String expected = "0 1 2 3 4 5 6 7 8 9 123";
+        String actual = integerList.toString();
+
+        assertEquals(expected, actual);
+    }
 }
