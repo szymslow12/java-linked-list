@@ -14,17 +14,16 @@ public class SingleLinkedList<T> {
 
     public void add(T data) {
         SingleLinkedNode<T> node = new SingleLinkedNode<>(data);
+        node.setIndex(length++);
 
         if (head == null) {
             head = node;
             last = node;
-            length++;
             return;
         }
 
         last.setNextNode(node);
         last = node;
-        length++;
     }
 
     public void remove(T data) {
