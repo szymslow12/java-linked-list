@@ -40,7 +40,11 @@ public class DoubleLinkedList<T> {
             DoubleLinkedNode<T> nextNode = currentNode.getNextNode();
             if (nextNode.getData().equals(data)) {
                 DoubleLinkedNode<T> nodeAfterNextNode = nextNode.getNextNode();
-                nodeAfterNextNode.setPreviousNode(currentNode);
+
+                if (nodeAfterNextNode != null) {
+                    nodeAfterNextNode.setPreviousNode(currentNode);
+                }
+
                 currentNode.setNextNode(nodeAfterNextNode);
                 decrementIndexes(nodeAfterNextNode);
                 length--;
