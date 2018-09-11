@@ -118,4 +118,29 @@ class SingleLinkedListTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    void testInsertOnEndOfList() {
+        SingleLinkedList<Integer> integerList = getIntegerList();
+
+        integerList.insert(integerList.length(), 123);
+
+        String expected = "0 1 2 3 4 5 6 7 8 9 123";
+        String actual = integerList.toString();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void testInsertMultipleItemsInMiddleOfList() {
+        SingleLinkedList<Integer> integerList = getIntegerList();
+
+        integerList.insert(3, 123);
+        integerList.insert(7, 321);
+
+        String expected = "0 1 2 123 3 4 5 321 6 7 8 9";
+        String actual = integerList.toString();
+
+        assertEquals(expected, actual);
+    }
 }
