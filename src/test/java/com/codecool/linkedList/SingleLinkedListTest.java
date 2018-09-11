@@ -24,6 +24,17 @@ class SingleLinkedListTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    void testListLength() {
+        SingleLinkedList<Integer> integerList = getIntegerList();
+
+        int expected = 10;
+
+        int actual = integerList.length();
+
+        assertEquals(expected, actual);
+    }
+
 
     @Test
     void testRemoveFirstItem() {
