@@ -58,6 +58,10 @@ public class SingleLinkedList<T> {
 
 
     public void insert(int index, T data) {
+        if (index > length - 1) {
+            add(data);
+            return;
+        }
         SingleLinkedNode<T> newNode = new SingleLinkedNode<>(data);
         SingleLinkedNode<T> currentNode = getNodeByIndex(index);
         newNode.setNextNode(currentNode);
