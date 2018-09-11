@@ -167,4 +167,22 @@ class SingleLinkedListTest {
 
         assertEquals(expected, actual);
     }
+
+    @Test
+    void testIterateThroughList() {
+        SingleLinkedList<Integer> integerList = getIntegerList();
+
+        String actual = iterateThroughList(integerList);
+        String expected = " 0 1 2 3 4 5 6 7 8 9";
+
+        assertEquals(expected, actual);
+    }
+
+    private String iterateThroughList(SingleLinkedList<Integer> integerList) {
+        String result = "";
+        for (int i = 0; i < integerList.length(); i++) {
+            result += String.format(" %s", integerList.get(i));
+        }
+        return result;
+    }
 }
