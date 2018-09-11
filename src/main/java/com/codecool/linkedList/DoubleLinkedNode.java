@@ -44,4 +44,8 @@ public class DoubleLinkedNode<T> {
     public void setIndex(int index) {
         this.index = index;
     }
+
+    public String toString() {
+        return data.toString();
+    }
 }
