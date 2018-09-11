@@ -1,5 +1,7 @@
 package com.codecool.linkedList;
 
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader;
+
 public class SingleLinkedList<T> {
 
     private SingleLinkedNode<T> head;
@@ -54,6 +56,43 @@ public class SingleLinkedList<T> {
             currentNode = currentNode.getNextNode();
         }
         return null;
+    }
+
+
+    public void insert(int index, T data) {
+//        SingleLinkedNode<T> currentNode = head;
+        SingleLinkedNode<T> newNode = new SingleLinkedNode<>(data);
+        SingleLinkedNode<T> currentNode = getNodeByIndex(index);
+
+        newNode.setNextNode(currentNode);
+        newNode.setIndex(index);
+        getNodeByIndex(index - 1).setNextNode(newNode);
+        incrementIndexes(currentNode);
+        /*while (currentNode != null) {
+            if (currentNode.getIndex() == index) {
+                newNode.setNextNode(currentNode);
+            }
+            currentNode = currentNode.getNextNode();
+        }*/
+    }
+
+    private SingleLinkedNode<T> getNodeByIndex(int index) {
+        SingleLinkedNode<T> curentNode = head;
+
+        while (curentNode != null) {
+            if (curentNode.getIndex() == index) {
+                return curentNode;
+            }
+            curentNode = curentNode.getNextNode();
+        }
+        return null;
+    }
+
+    private void incrementIndexes(SingleLinkedNode<T> node) {
+        while (node != null) {
+            node.setIndex(node.getIndex() + 1);
+            node = node.getNextNode();
+        }
     }
 
     public String toString() {
