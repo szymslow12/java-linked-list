@@ -4,6 +4,7 @@ public class SingleLinkedNode<T> {
 
     private T data;
     private SingleLinkedNode<T> nextNode;
+    private int index;
 
     public SingleLinkedNode(T data) {
         this.data = data;
@@ -28,5 +29,13 @@ public class SingleLinkedNode<T> {
 
     public String toString() {
         return data.toString();
+    }
+
+    public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
     }
 }
