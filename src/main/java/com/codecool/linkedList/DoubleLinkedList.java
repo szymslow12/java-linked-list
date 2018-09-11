@@ -62,7 +62,41 @@ public class DoubleLinkedList<T> {
     }
 
     public void insert(int index, T data) {
+        if (index > length - 1) {
+            add(data);
+            return;
+        }
+        DoubleLinkedNode<T> newNode = new DoubleLinkedNode<>(data, length++);
+        DoubleLinkedNode<T> currentNode = getNodeByIndex(index);
+        DoubleLinkedNode<T> previousNode = currentNode.getPreviousNode();
+        newNode.setNextNode(currentNode);
+        newNode.setPreviousNode(previousNode);
+        if (previousNode != null) {
+            previousNode.setNextNode(newNode);
+        } else {
+            head = newNode;
+        }
+        currentNode.setPreviousNode(newNode);
+        incrementIndexes(currentNode);
+    }
 
+    private DoubleLinkedNode<T> getNodeByIndex(int index) {
+        DoubleLinkedNode<T> currentNode = head;
+
+        while (currentNode != null) {
+            if (currentNode.getIndex() == index) {
+                return currentNode;
+            }
+            currentNode = currentNode.getNextNode();
+        }
+        return null;
+    }
+
+    private void incrementIndexes(DoubleLinkedNode<T> node) {
+        while (node != null) {
+            node.setIndex(node.getIndex() + 1);
+            node = node.getNextNode();
+        }
     }
 
     public T get(int index) {
