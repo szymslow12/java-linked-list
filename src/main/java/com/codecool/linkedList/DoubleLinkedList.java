@@ -27,7 +27,34 @@ public class DoubleLinkedList<T> {
     }
 
     public void remove(T data) {
+        if (head == null) return;
+        if (head.getData().equals(data)) {
+            head = head.getNextNode();
+            head.setPreviousNode(null);
+            decrementIndexes(head);
+            length--;
+        }
+        DoubleLinkedNode<T> currentNode = head;
 
+        while (currentNode.getNextNode() != null) {
+            DoubleLinkedNode<T> nextNode = currentNode.getNextNode();
+            if (nextNode.getData().equals(data)) {
+                DoubleLinkedNode<T> nodeAfterNextNode = nextNode.getNextNode();
+                nodeAfterNextNode.setPreviousNode(currentNode);
+                currentNode.setNextNode(nodeAfterNextNode);
+                decrementIndexes(nodeAfterNextNode);
+                length--;
+                return;
+            }
+            currentNode = nextNode;
+        }
+    }
+
+    private void decrementIndexes(DoubleLinkedNode<T> node) {
+        while (node != null) {
+            node.setIndex(node.getIndex() - 1);
+            node = node.getNextNode();
+        }
     }
 
     public void insert(int index, T data) {
