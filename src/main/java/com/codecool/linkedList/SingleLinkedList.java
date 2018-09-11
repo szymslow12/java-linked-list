@@ -55,6 +55,14 @@ public class SingleLinkedList<T> {
         return sB.toString();
     }
 
+    public void print() {
+        SingleLinkedNode<T> current = head;
+        while(current != null) {
+            System.out.println(current.getIndex() + ". " + current);
+            current = current.getNextNode();
+        }
+    }
+
     public int length() {
         return length;
     }
