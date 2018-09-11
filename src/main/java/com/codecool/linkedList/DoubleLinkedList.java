@@ -66,7 +66,15 @@ public class DoubleLinkedList<T> {
     }
 
     public T get(int index) {
-        return head.getData();
+        DoubleLinkedNode<T> currentNode = head;
+
+        while (currentNode != null) {
+            if (currentNode.getIndex() == index) {
+                return currentNode.getData();
+            }
+            currentNode = currentNode.getNextNode();
+        }
+        return null;
     }
 
     public int length() {
