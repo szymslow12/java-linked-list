@@ -108,6 +108,18 @@ class SingleLinkedListTest {
     }
 
     @Test
+    void testRemoveNotExistItem() {
+        SingleLinkedList<Integer> integerList = getIntegerList();
+
+        integerList.remove(142);
+
+        String expected = "0 1 2 3 4 5 6 7 8 9";
+        String actual = integerList.toString();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
     void testInsertOnBeginningOfList() {
         SingleLinkedList<Integer> integerList = getIntegerList();
 
