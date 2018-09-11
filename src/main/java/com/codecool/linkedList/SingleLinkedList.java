@@ -30,6 +30,8 @@ public class SingleLinkedList<T> {
         if (head == null) return;
         if (head.getData().equals(data)) {
             head = head.getNextNode();
+            decrementIndexes(head);
+            length--;
         }
         SingleLinkedNode<T> currentNode = head;
 
@@ -37,6 +39,8 @@ public class SingleLinkedList<T> {
             SingleLinkedNode<T> nextNode = currentNode.getNextNode();
             if (nextNode.getData().equals(data)) {
                 currentNode.setNextNode(nextNode.getNextNode());
+                decrementIndexes(nextNode.getNextNode());
+                length--;
                 return;
             }
             currentNode = nextNode;
@@ -87,6 +91,15 @@ public class SingleLinkedList<T> {
             node.setIndex(node.getIndex() + 1);
             node = node.getNextNode();
         }
+        print();
+    }
+
+    private void decrementIndexes(SingleLinkedNode<T> node) {
+        while (node != null) {
+            node.setIndex(node.getIndex() - 1);
+            node = node.getNextNode();
+        }
+        print();
     }
 
     private void changePointerOfPreviousNodeWithGivenIndex(int index, SingleLinkedNode<T> newPointer) {
