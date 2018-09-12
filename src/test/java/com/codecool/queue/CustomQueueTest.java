@@ -71,4 +71,14 @@ class CustomQueueTest {
         assertEquals(expected, actual);
     }
 
+
+    @Test
+    void testDequeueThrowsExceptionWhenQueueIsEmpty() {
+        CustomQueue queue = new CustomQueue();
+
+        assertThrows(QueueIsEmpty.class, () -> {
+            queue.dequeue();
+        });
+    }
+
 }
