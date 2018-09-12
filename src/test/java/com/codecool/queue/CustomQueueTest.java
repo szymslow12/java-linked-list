@@ -47,4 +47,28 @@ class CustomQueueTest {
         });
     }
 
+
+    @Test
+    void testDequeueReturnProperValue() throws QueueIsEmpty {
+        CustomQueue queue = createQueue(3);
+
+        String expected = "Test 0";
+        String actual = queue.dequeue();
+
+        assertEquals(expected, actual);
+    }
+
+
+    @Test
+    void testDequeueProperlyMovesToNextItem() throws QueueIsEmpty {
+        CustomQueue queue = createQueue(3);
+
+        queue.dequeue();
+
+        String expected = "Test 1";
+        String actual = queue.peek();
+
+        assertEquals(expected, actual);
+    }
+
 }
