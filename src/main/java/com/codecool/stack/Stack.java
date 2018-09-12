@@ -1,11 +1,9 @@
 package com.codecool.stack;
 
-import com.codecool.linkedList.DoubleLinkedNode;
-
 public class Stack<T> {
 
     private int stackSize;
-    private DoubleLinkedNode<T> topNode;
+    private Node<T> topNode;
     private int nextIndex;
 
     public Stack(int size) {
@@ -18,15 +16,13 @@ public class Stack<T> {
         if (nextIndex == stackSize) {
             throw new StackOverflowError("Stack is full, can't add item!");
         } else {
-            DoubleLinkedNode<T> newNode = new DoubleLinkedNode<>(data, nextIndex++);
+            Node<T> newNode = new Node<>(data);
             if (topNode == null) {
                 topNode = newNode;
-                topNode.setPreviousNode(null);
                 return;
             }
 
-            topNode.setNextNode(newNode);
-            newNode.setPreviousNode(topNode);
+            newNode.setNextNode(topNode);
             topNode = newNode;
         }
     }
@@ -37,9 +33,8 @@ public class Stack<T> {
             throw new StackOverflowError("Stack is empty, can't pop item!");
         } else {
             T data = topNode.getData();
-            DoubleLinkedNode<T> newTop = topNode.getPreviousNode();
+            Node<T> newTop = topNode.getNextNode();
             topNode.setNextNode(null);
-            topNode.setPreviousNode(null);
             newTop.setNextNode(null);
             topNode = newTop;
             nextIndex--;
@@ -49,12 +44,12 @@ public class Stack<T> {
 
     public String toString() {
         StringBuilder sB = new StringBuilder(topNode != null ? topNode.toString(): "");
-        DoubleLinkedNode<T> currentNode = topNode;
+        Node<T> currentNode = topNode;
 
-        while (currentNode.getPreviousNode() != null) {
-            DoubleLinkedNode<T> previousNode = currentNode.getPreviousNode();
-            sB.append(String.format(" %s", previousNode.toString()));
-            currentNode = previousNode;
+        while (currentNode.getNextNode() != null) {
+            Node<T> nextNode = currentNode.getNextNode();
+            sB.append(String.format(" %s", nextNode.toString()));
+            currentNode = nextNode;
         }
         return sB.toString();
     }
