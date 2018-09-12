@@ -36,7 +36,6 @@ public class Stack<T> {
             T data = topNode.getData();
             Node<T> newTop = topNode.getNextNode();
             topNode.setNextNode(null);
-            newTop.setNextNode(null);
             topNode = newTop;
             nodesInStack--;
             return data;
