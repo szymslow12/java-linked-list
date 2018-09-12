@@ -4,10 +4,12 @@ public class Node {
 
     private String value;
     private Node nextNode;
+    private int priority;
 
-    public Node(String value) {
+    public Node(String value, int priority) {
         this.value = value;
         nextNode = null;
+        this.priority = priority;
     }
 
 
@@ -30,6 +32,15 @@ public class Node {
         this.value = value;
     }
 
+
+    public int getPriority() {
+        return priority;
+    }
+
+
+    public void setPriority(int priority) {
+        this.priority = priority;
+    }
 
     public String toString() {
         return value;
