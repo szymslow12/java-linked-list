@@ -1,5 +1,8 @@
 package com.codecool.stack;
 
+import com.codecool.exceptions.StackOverflow;
+import com.codecool.exceptions.StackUnderflow;
+
 public class Stack<T> {
 
     private int stackSize;
@@ -12,9 +15,9 @@ public class Stack<T> {
         nodesInStack = 0;
     }
 
-    public void push(T data) {
+    public void push(T data) throws StackOverflow {
         if (nodesInStack == stackSize) {
-            throw new StackOverflowError("Stack is full, can't add item!");
+            throw new StackOverflow("Stack is full, can't add item!");
         } else {
             Node<T> newNode = new Node<>(data);
             nodesInStack++;
@@ -29,9 +32,9 @@ public class Stack<T> {
     }
 
 
-    public T pop() {
+    public T pop() throws StackUnderflow {
         if (nodesInStack == 0) {
-            throw new StackOverflowError("Stack is empty, can't pop item!");
+            throw new StackUnderflow("Stack is empty, can't pop item!");
         } else {
             T data = topNode.getData();
             Node<T> newTop = topNode.getNextNode();
