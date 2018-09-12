@@ -83,4 +83,12 @@ class StackTest {
         assertEquals(expected, actual);
     }
 
+
+    @Test
+    void testPeekReturnNullIfStackIsEmpty() {
+        Stack<Integer> integerStack = new Stack(0);
+
+        assertNull(integerStack.peek());
+    }
+
 }
