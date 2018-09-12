@@ -4,19 +4,20 @@ public class Stack<T> {
 
     private int stackSize;
     private Node<T> topNode;
-    private int nextIndex;
+    private int nodesInStack;
 
     public Stack(int size) {
         stackSize = size;
         topNode = null;
-        nextIndex = 0;
+        nodesInStack = 0;
     }
 
     public void push(T data) {
-        if (nextIndex == stackSize) {
+        if (nodesInStack == stackSize) {
             throw new StackOverflowError("Stack is full, can't add item!");
         } else {
             Node<T> newNode = new Node<>(data);
+            nodesInStack++;
             if (topNode == null) {
                 topNode = newNode;
                 return;
@@ -29,7 +30,7 @@ public class Stack<T> {
 
 
     public T pop() {
-        if (nextIndex == 0) {
+        if (nodesInStack == 0) {
             throw new StackOverflowError("Stack is empty, can't pop item!");
         } else {
             T data = topNode.getData();
@@ -37,7 +38,7 @@ public class Stack<T> {
             topNode.setNextNode(null);
             newTop.setNextNode(null);
             topNode = newTop;
-            nextIndex--;
+            nodesInStack--;
             return data;
         }
     }
