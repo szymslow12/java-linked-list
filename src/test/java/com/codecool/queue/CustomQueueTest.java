@@ -103,4 +103,26 @@ class CustomQueueTest {
         assertEquals(expected, actual);
     }
 
+
+    @Test
+    void testIsEmptyShowIfQueueIsEmpty() {
+        CustomQueue queue = new CustomQueue();
+
+        boolean expected = true;
+        boolean actual = queue.isEmpty();
+
+        assertEquals(expected, actual);
+    }
+
+
+    @Test
+    void testIsEmptyShowIfQueueIsNotEmpty() {
+        CustomQueue queue = createQueue(3);
+
+        boolean expected = false;
+        boolean actual = queue.isEmpty();
+
+        assertEquals(expected, actual);
+    }
+
 }
