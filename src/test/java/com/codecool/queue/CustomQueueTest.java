@@ -11,7 +11,7 @@ class CustomQueueTest {
         CustomQueue queue = new CustomQueue();
 
         for (int i = 0; i < size; i++) {
-            queue.enqueue(String.format("Test %s", Integer.toString(i)));
+            queue.enqueue(String.format("Test %s", Integer.toString(i)), i);
         }
         return queue;
     }
