@@ -55,7 +55,7 @@ public class CustomQueue {
 
         while (currentNode.getNextNode() != null) {
             Node nextNode = currentNode.getNextNode();
-            sB.append(nextNode.toString());
+            sB.append(String.format(", %s", nextNode.toString()));
             currentNode = nextNode;
         }
         return sB.toString();
