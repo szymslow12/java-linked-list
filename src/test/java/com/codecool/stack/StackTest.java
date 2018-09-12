@@ -37,4 +37,39 @@ class StackTest {
         });
     }
 
+
+    @Test
+    void testPopReturnProperItem() {
+        Stack<Integer> integerStack = getIntegerStack();
+
+        String expected = "9";
+        String actual = Integer.toString(integerStack.pop());
+
+        assertEquals(expected, actual);
+    }
+
+
+    @Test
+    void testPopProperlyRemovesItem() {
+        Stack<Integer> integerStack = getIntegerStack();
+
+        integerStack.pop();
+        integerStack.pop();
+
+        String expected = "7 6 5 4 3 2 1 0";
+        String actual = integerStack.toString();
+
+        assertEquals(expected, actual);
+    }
+
+
+    @Test
+    void testPopThrowsErrorWhenStackIsEmpty() {
+        Stack<Integer> integerStack = new Stack<>(0);
+
+        assertThrows(StackOverflowError.class, () -> {
+           integerStack.pop();
+        });
+    }
+
 }
