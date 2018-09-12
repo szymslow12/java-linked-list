@@ -37,7 +37,10 @@ public class CustomQueue {
     }
 
 
-    public String dequeue() {
+    public String dequeue() throws QueueIsEmpty {
+        if (head == null) {
+            throw new QueueIsEmpty("Can't dequeue! Queue is empty!");
+        }
         String value = head.getValue();
         head = head.getNextNode();
         size--;
