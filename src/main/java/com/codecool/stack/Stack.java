@@ -37,7 +37,7 @@ public class Stack<T> {
 
         while (currentNode.getPreviousNode() != null) {
             DoubleLinkedNode<T> previousNode = currentNode.getPreviousNode();
-            sB.append(previousNode.toString());
+            sB.append(String.format(" %s", previousNode.toString()));
             currentNode = previousNode;
         }
         return sB.toString();
