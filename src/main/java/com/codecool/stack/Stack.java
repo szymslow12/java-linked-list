@@ -42,6 +42,21 @@ public class Stack<T> {
         }
     }
 
+
+    public T peek() {
+        return topNode != null ? topNode.getData(): null;
+    }
+
+
+    public int size() {
+        return stackSize;
+    }
+
+
+    public int getAvailableSpace() {
+        return stackSize - nodesInStack;
+    }
+
     public String toString() {
         StringBuilder sB = new StringBuilder(topNode != null ? topNode.toString(): "");
         Node<T> currentNode = topNode;
