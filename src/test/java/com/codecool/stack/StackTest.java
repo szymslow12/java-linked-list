@@ -42,8 +42,8 @@ class StackTest {
     void testPopReturnProperItem() {
         Stack<Integer> integerStack = getIntegerStack();
 
-        String expected = "9";
-        String actual = Integer.toString(integerStack.pop());
+        int expected = 9;
+        int actual = integerStack.pop();
 
         assertEquals(expected, actual);
     }
@@ -70,6 +70,17 @@ class StackTest {
         assertThrows(StackOverflowError.class, () -> {
            integerStack.pop();
         });
+    }
+
+
+    @Test
+    void testPeekReturnsProperItem() {
+        Stack<Integer> integerStack = getIntegerStack();
+
+        int expected = 9;
+        int actual = integerStack.peek();
+
+        assertEquals(expected, actual);
     }
 
 }
