@@ -17,7 +17,7 @@ public class CustomQueue {
 
 
     public String peek() {
-        return "";
+        return head != null ? head.getValue(): null;
     }
 
 
