@@ -48,4 +48,16 @@ public class CustomQueue {
     public boolean isEmpty() {
         return head == null;
     }
+
+    public String toString() {
+        StringBuilder sB = new StringBuilder(head.toString());
+        Node currentNode = head;
+
+        while (currentNode.getNextNode() != null) {
+            Node nextNode = currentNode.getNextNode();
+            sB.append(nextNode.toString());
+            currentNode = nextNode;
+        }
+        return sB.toString();
+    }
 }
