@@ -1,5 +1,7 @@
 package com.codecool.queue;
 
+import com.codecool.exceptions.QueueIsEmpty;
+
 public class CustomQueue {
 
     private Node head;
@@ -27,8 +29,11 @@ public class CustomQueue {
     }
 
 
-    public String peek() {
-        return head != null ? head.getValue(): null;
+    public String peek() throws QueueIsEmpty {
+        if (head == null) {
+            throw new QueueIsEmpty("Can't peek! Queue is empty!");
+        }
+        return head.getValue();
     }
 
 
