@@ -81,4 +81,26 @@ class CustomQueueTest {
         });
     }
 
+
+    @Test
+    void testQueueSizeReturnProperSize() {
+        CustomQueue queue = createQueue(5);
+
+        int expected = 5;
+        int actual = queue.queueSize();
+
+        assertEquals(expected, actual);
+    }
+
+
+    @Test
+    void testQueueSizeReturnProperSizeWhenIsEmpty() {
+        CustomQueue queue = new CustomQueue();
+
+        int expected = 0;
+        int actual = queue.queueSize();
+
+        assertEquals(expected, actual);
+    }
+
 }
