@@ -4,7 +4,7 @@ public class Node {
 
     private String value;
     private Node nextNode;
-    private int priority;
+    private Integer priority;
 
     public Node(String value, int priority) {
         this.value = value;
@@ -33,12 +33,12 @@ public class Node {
     }
 
 
-    public int getPriority() {
+    public Integer getPriority() {
         return priority;
     }
 
 
-    public void setPriority(int priority) {
+    public void setPriority(Integer priority) {
         this.priority = priority;
     }
 
