@@ -102,4 +102,25 @@ class StackTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    void testGetAvailableSpaceReturnsProperFreeSpaceInEmptyStack() {
+        Stack<Integer> integerStack = new Stack<>(10);
+
+        int expected = 10;
+        int actual = integerStack.getAvailableSpace();
+
+        assertEquals(expected, actual);
+    }
+
+
+    @Test
+    void testGetAvailableSpaceReturnsProperFreeSpaceInFullStack() {
+        Stack<Integer> integerStack = getIntegerStack();
+
+        int expected = 0;
+        int actual = integerStack.getAvailableSpace();
+
+        assertEquals(expected, actual);
+    }
+
 }
