@@ -1,12 +1,14 @@
 package com.codecool.stack;
 
+import com.codecool.exceptions.StackOverflow;
+import com.codecool.exceptions.StackUnderflow;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class StackTest {
 
-    private Stack<Integer> getIntegerStack() {
+    private Stack<Integer> getIntegerStack() throws StackOverflow {
         Stack<Integer> integerStack = new Stack<>(10);
 
         for (int i = 0; i < 10; i++) {
@@ -18,7 +20,7 @@ class StackTest {
 
 
     @Test
-    void testPushItemsToStack() {
+    void testPushItemsToStack() throws StackOverflow {
         Stack<Integer> integerStack = getIntegerStack();
 
         String expected = "9 8 7 6 5 4 3 2 1 0";
@@ -29,17 +31,17 @@ class StackTest {
 
 
     @Test
-    void testPushThrowsErrorWhenStackIsFull() {
+    void testPushThrowsErrorWhenStackIsFull() throws StackOverflow {
         Stack<Integer> integerStack = getIntegerStack();
 
-        assertThrows(StackOverflowError.class, () -> {
+        assertThrows(StackOverflow.class, () -> {
             integerStack.push(10);
         });
     }
 
 
     @Test
-    void testPopReturnProperItem() {
+    void testPopReturnProperItem() throws StackOverflow, StackUnderflow {
         Stack<Integer> integerStack = getIntegerStack();
 
         int expected = 9;
@@ -50,7 +52,7 @@ class StackTest {
 
 
     @Test
-    void testPopProperlyRemovesItem() {
+    void testPopProperlyRemovesItem() throws StackOverflow, StackUnderflow {
         Stack<Integer> integerStack = getIntegerStack();
 
         integerStack.pop();
@@ -67,14 +69,14 @@ class StackTest {
     void testPopThrowsErrorWhenStackIsEmpty() {
         Stack<Integer> integerStack = new Stack<>(0);
 
-        assertThrows(StackOverflowError.class, () -> {
+        assertThrows(StackUnderflow.class, () -> {
            integerStack.pop();
         });
     }
 
 
     @Test
-    void testPeekReturnsProperItem() {
+    void testPeekReturnsProperItem() throws StackOverflow {
         Stack<Integer> integerStack = getIntegerStack();
 
         int expected = 9;
@@ -114,7 +116,7 @@ class StackTest {
 
 
     @Test
-    void testGetAvailableSpaceReturnsProperFreeSpaceInFullStack() {
+    void testGetAvailableSpaceReturnsProperFreeSpaceInFullStack() throws StackOverflow {
         Stack<Integer> integerStack = getIntegerStack();
 
         int expected = 0;
