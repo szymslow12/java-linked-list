@@ -15,8 +15,8 @@ public class CustomQueue {
     }
 
 
-    public void enqueue(String value) {
-        Node newNode = new Node(value);
+    public void enqueue(String value, Integer priority) {
+        Node newNode = new Node(value, priority);
         size++;
         if (head == null) {
             head = newNode;
