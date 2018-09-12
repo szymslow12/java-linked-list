@@ -41,7 +41,7 @@ public class CustomQueue {
 
 
     public int queueSize() {
-        return 0;
+        return size;
     }
 
 
