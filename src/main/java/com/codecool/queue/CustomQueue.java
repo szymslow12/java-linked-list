@@ -4,15 +4,26 @@ public class CustomQueue {
 
     private Node head;
     private Node tail;
+    private int size;
 
     public CustomQueue() {
         head = null;
         tail = null;
+        size = 0;
     }
 
 
     public void enqueue(String value) {
+        Node newNode = new Node(value);
+        size++;
+        if (head == null) {
+            head = newNode;
+            tail = newNode;
+            return;
+        }
 
+        tail.setNextNode(newNode);
+        tail = newNode;
     }
 
 
@@ -22,7 +33,10 @@ public class CustomQueue {
 
 
     public String dequeue() {
-        return "";
+        String value = head.getValue();
+        head = head.getNextNode();
+        size--;
+        return value;
     }
 
 
