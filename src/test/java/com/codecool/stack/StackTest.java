@@ -91,4 +91,15 @@ class StackTest {
         assertNull(integerStack.peek());
     }
 
+
+    @Test
+    void testSizeReturnsProperStackSize() {
+        Stack<Integer> integerStack = new Stack<>(10);
+
+        int expected = 10;
+        int actual = integerStack.size();
+
+        assertEquals(expected, actual);
+    }
+
 }
