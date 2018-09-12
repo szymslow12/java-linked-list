@@ -31,6 +31,22 @@ public class Stack<T> {
         }
     }
 
+
+    public T pop() {
+        if (nextIndex == 0) {
+            throw new StackOverflowError("Stack is empty, can't pop item!");
+        } else {
+            T data = topNode.getData();
+            DoubleLinkedNode<T> newTop = topNode.getPreviousNode();
+            topNode.setNextNode(null);
+            topNode.setPreviousNode(null);
+            newTop.setNextNode(null);
+            topNode = newTop;
+            nextIndex--;
+            return data;
+        }
+    }
+
     public String toString() {
         StringBuilder sB = new StringBuilder(topNode != null ? topNode.toString(): "");
         DoubleLinkedNode<T> currentNode = topNode;
