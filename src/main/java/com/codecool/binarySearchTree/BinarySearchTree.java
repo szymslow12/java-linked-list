@@ -31,18 +31,25 @@ public class BinarySearchTree {
 
     public void addNodeToProperParent(Node parent, Node newNode) {
         while (parent != null) {
+            System.out.print(newNode.getValue() + " - " + parent.getValue());
             if (newNode.getValue() <= parent.getValue()) {
+                System.out.print(" LEFT ");
                 if (parent.leftNode() == null) {
+                    System.out.println(true);
                     parent.setLeftNode(newNode);
                     return;
                 } else {
+                    System.out.println(false);
                     parent = parent.leftNode();
                 }
             } else {
+                System.out.print(" RIGHT");
                 if (parent.rightNode() == null) {
+                    System.out.println(true);
                     parent.setRightNode(newNode);
                     return;
                 } else {
+                    System.out.println(false);
                     parent = parent.rightNode();
                 }
             }
@@ -77,6 +84,9 @@ public class BinarySearchTree {
 
     public static int minimalHeight(Integer[] intArray) {
         BinarySearchTree bsn = new BinarySearchTree();
+        int middleIndex = Math.abs(intArray.length / 2);
+        Integer rootValue = intArray[middleIndex];
+        bsn.add(rootValue);
         for (Integer number: intArray) {
             bsn.add(number);
         }
@@ -85,7 +95,7 @@ public class BinarySearchTree {
 
 
     public static void main(String[] args) {
-        Integer[] intArray = {5, 1};
+        Integer[] intArray = {5, 1, 3, 5, 0, 1, 2, 3,4 ,5 ,6 ,7 ,8};
         System.out.println(minimalHeight(intArray));
     }
 }
