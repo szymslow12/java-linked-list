@@ -29,9 +29,9 @@ class CustomQueueTest {
 
     @Test
     void testPeekReturnProperValue() throws QueueIsEmpty {
-        CustomQueue queue = createQueue(3);
+        CustomQueue queue = createQueue(10);
 
-        String expected = "Test 0";
+        String expected = "Test 9";
         String actual = queue.peek();
 
         assertEquals(expected, actual);
@@ -50,9 +50,9 @@ class CustomQueueTest {
 
     @Test
     void testDequeueReturnProperValue() throws QueueIsEmpty {
-        CustomQueue queue = createQueue(3);
+        CustomQueue queue = createQueue(10);
 
-        String expected = "Test 0";
+        String expected = "Test 9";
         String actual = queue.dequeue();
 
         assertEquals(expected, actual);
@@ -61,11 +61,11 @@ class CustomQueueTest {
 
     @Test
     void testDequeueProperlyMovesToNextItem() throws QueueIsEmpty {
-        CustomQueue queue = createQueue(3);
+        CustomQueue queue = createQueue(15);
 
         queue.dequeue();
 
-        String expected = "Test 1";
+        String expected = "Test 13";
         String actual = queue.peek();
 
         assertEquals(expected, actual);
