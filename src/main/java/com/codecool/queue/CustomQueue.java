@@ -7,6 +7,7 @@ public class CustomQueue {
     private Node head;
     private Node tail;
     private int size;
+    private int highestPriority;
 
     public CustomQueue() {
         head = null;
