@@ -1,5 +1,7 @@
 package com.codecool.heap;
 
+import java.util.Arrays;
+
 public class Heap {
 
     private int capacity;
@@ -62,5 +64,28 @@ public class Heap {
 
     private int parent(int childIndex) {
         return heapItems[getParentIndex(childIndex)];
+    }
+
+
+    private void swapItems(int firstIndex, int secondIndex) {
+        int tempItem = heapItems[firstIndex];
+        heapItems[firstIndex] = heapItems[secondIndex];
+        heapItems[secondIndex] = tempItem;
+    }
+
+
+    private void ensureExtraCapacity() {
+        if (size == capacity) {
+            heapItems = Arrays.copyOf(heapItems, capacity * 2);
+            capacity *= 2;
+        }
+    }
+
+
+    public int peek() {
+        if (size == 0) {
+            throw new IllegalStateException("Heap is empty!");
+        }
+        return heapItems[0];
     }
 }
