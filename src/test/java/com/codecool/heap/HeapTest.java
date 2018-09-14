@@ -17,7 +17,6 @@ class HeapTest {
     @Test
     void testAddItem() {
         Heap heap = new Heap(3);
-
         heap.add(1);
         heap.add(2);
         heap.add(3);
@@ -32,7 +31,6 @@ class HeapTest {
     @Test
     void testAddItemAddsItemInProperOrderBiggestNumberAdded() {
         Heap heap = getHeap(10);
-
         heap.add(123);
 
         int expected = 123;
@@ -45,7 +43,6 @@ class HeapTest {
     @Test
     void testAddItemAddsItemInProperOrderLowestNumberAdded() {
         Heap heap = getHeap(10);
-
         heap.add(-123);
 
         int expected = 9;
@@ -74,5 +71,28 @@ class HeapTest {
         assertThrows(IllegalStateException.class, () -> {
             heap.peek();
         });
+    }
+
+
+    @Test
+    void testPollReturnProperItemFromHeap() {
+        Heap heap = getHeap(10);
+
+        int expected = 9;
+        int actual = heap.poll();
+
+        assertEquals(expected, actual);
+    }
+
+
+    @Test
+    void testPollRemoveAndMoveToNextItem() {
+        Heap heap = getHeap(10);
+        heap.poll();
+
+        int expected = 8;
+        int actual = heap.peek();
+
+        assertEquals(expected, actual);
     }
 }
