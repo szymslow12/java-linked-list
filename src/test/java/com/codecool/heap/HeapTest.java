@@ -43,6 +43,20 @@ class HeapTest {
 
 
     @Test
+    void testAddItemAddsItemInProperOrderLowestNumberAdded() {
+        Heap heap = getHeap(10);
+
+        heap.add(-123);
+
+        int expected = 9;
+        int actual = heap.peek();
+
+        assertEquals(expected, actual);
+    }
+
+
+
+    @Test
     void testPeekReturnProperItem() {
         Heap heap = getHeap(10);
 
