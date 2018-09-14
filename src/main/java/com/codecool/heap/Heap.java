@@ -114,10 +114,10 @@ public class Heap {
         int index = 0;
         while (hasLeftChild(index)) {
             int smallerChildIndex = getLeftChildIndex(index);
-            if (hasRightChild(index) && rightChild(index) < leftChild(index)) {
+            if (hasRightChild(index) && rightChild(index) > leftChild(index)) {
                 smallerChildIndex = getRightChildIndex(index);
             }
-            if (heapItems[index] < heapItems[smallerChildIndex]) {
+            if (heapItems[index] > heapItems[smallerChildIndex]) {
                 return;
             } else {
                 swapItems(index, smallerChildIndex);
@@ -129,7 +129,7 @@ public class Heap {
 
     private void heapifyUp() {
         int index = size - 1;
-        while (hasParent(index) && parent(index) > heapItems[index]) {
+        while (hasParent(index) && parent(index) < heapItems[index]) {
             swapItems(getParentIndex(index), index);
             index = getParentIndex(index);
         }
