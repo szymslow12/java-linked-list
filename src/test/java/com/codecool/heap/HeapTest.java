@@ -68,9 +68,9 @@ class HeapTest {
     void testPeekThrowExceptionWhenHeapIsEmpty() {
         Heap heap = new Heap();
 
-        assertThrows(IllegalStateException.class, () -> {
-            heap.peek();
-        });
+        assertThrows(IllegalStateException.class, () ->
+            heap.peek()
+        );
     }
 
 
@@ -101,8 +101,8 @@ class HeapTest {
     void testPollThrowExceptionWhenHeapIsEmpty() {
         Heap heap = new Heap();
 
-        assertThrows(IllegalStateException.class, () -> {
-            heap.poll();
-        });
+        assertThrows(IllegalStateException.class, () ->
+            heap.poll()
+        );
     }
 }
