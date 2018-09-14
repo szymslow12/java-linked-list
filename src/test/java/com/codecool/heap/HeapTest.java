@@ -15,7 +15,7 @@ class HeapTest {
     }
 
     @Test
-    void testAddItem() {
+    void testAddItems() {
         Heap heap = new Heap(3);
         heap.add(1);
         heap.add(2);
@@ -94,5 +94,15 @@ class HeapTest {
         int actual = heap.peek();
 
         assertEquals(expected, actual);
+    }
+
+
+    @Test
+    void testPollThrowExceptionWhenHeapIsEmpty() {
+        Heap heap = new Heap();
+
+        assertThrows(IllegalStateException.class, () -> {
+            heap.poll();
+        });
     }
 }
