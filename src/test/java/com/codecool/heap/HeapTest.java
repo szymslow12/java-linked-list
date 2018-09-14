@@ -30,6 +30,19 @@ class HeapTest {
 
 
     @Test
+    void testAddItemAddsItemInProperOrderBiggestNumberAdded() {
+        Heap heap = getHeap(10);
+
+        heap.add(123);
+
+        int expected = 123;
+        int actual = heap.peek();
+
+        assertEquals(expected, actual);
+    }
+
+
+    @Test
     void testPeekReturnProperItem() {
         Heap heap = getHeap(10);
 
