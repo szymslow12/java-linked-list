@@ -1,5 +1,7 @@
 package com.codecool.heap;
 
+import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class HeapTest {
@@ -12,4 +14,24 @@ class HeapTest {
         return heap;
     }
 
+
+    @Test
+    void testPeekReturnProperItem() {
+        Heap heap = getHeap(10);
+
+        int expected = 9;
+        int actual = heap.peek();
+
+        assertEquals(expected, actual);
+    }
+
+
+    @Test
+    void testPeekThrowExceptionWhenHeapIsEmpty() {
+        Heap heap = new Heap();
+
+        assertThrows(IllegalStateException.class, () -> {
+            heap.peek();
+        });
+    }
 }
