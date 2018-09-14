@@ -88,4 +88,44 @@ public class Heap {
         }
         return heapItems[0];
     }
+
+
+    public int poll() {
+        if (size == 0) {
+            throw new IllegalStateException("Heap is empty!");
+        }
+        int heapItem = heapItems[0];
+        heapItems[0] = heapItems[size - 1];
+        size--;
+        heapifyDown();
+        return heapItem;
+    }
+
+
+    public void add(int heapItem) {
+        ensureExtraCapacity();
+        heapItems[size] = heapItem;
+        size++;
+        heapifyUp();
+    }
+
+
+    private void heapifyDown() {
+        int index = 0;
+        while (hasLeftChild(index)) {
+            int smallerChildIndex = getLeftChildIndex(index);
+            if (hasRightChild(index) && rightChild(index) < leftChild(index)) {
+                smallerChildIndex = getRightChildIndex(index);
+            }
+        }
+    }
+
+
+    private void heapifyUp() {
+        int index = size - 1;
+        while (hasParent(index) && parent(index) > heapItems[index]) {
+            swapItems(getParentIndex(index), index);
+            index = getParentIndex(index);
+        }
+    }
 }
