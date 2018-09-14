@@ -14,6 +14,20 @@ class HeapTest {
         return heap;
     }
 
+    @Test
+    void testAddItem() {
+        Heap heap = new Heap(3);
+
+        heap.add(1);
+        heap.add(2);
+        heap.add(3);
+
+        String expected = "[3, 1, 2]";
+        String actual = heap.toString();
+
+        assertEquals(expected, actual);
+    }
+
 
     @Test
     void testPeekReturnProperItem() {
