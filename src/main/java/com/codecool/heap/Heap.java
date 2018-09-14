@@ -134,4 +134,9 @@ public class Heap {
             index = getParentIndex(index);
         }
     }
+
+
+    public String toString() {
+        return Arrays.toString(heapItems);
+    }
 }
