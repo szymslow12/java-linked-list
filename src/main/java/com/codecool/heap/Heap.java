@@ -117,6 +117,12 @@ public class Heap {
             if (hasRightChild(index) && rightChild(index) < leftChild(index)) {
                 smallerChildIndex = getRightChildIndex(index);
             }
+            if (heapItems[index] < heapItems[smallerChildIndex]) {
+                return;
+            } else {
+                swapItems(index, smallerChildIndex);
+                index = smallerChildIndex;
+            }
         }
     }
 
