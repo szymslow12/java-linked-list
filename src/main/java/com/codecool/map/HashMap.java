@@ -11,9 +11,9 @@ public class HashMap {
     public void add(String key, Integer value) {
         int hashCode = Math.abs(key.hashCode() % 16);
         KeyValue keyValue = new KeyValue(key, value);
-        LinkedList list = mapElements[hashCode];
+        LinkedList<KeyValue> list = mapElements[hashCode];
         if (list == null) {
-            list = new LinkedList<KeyValue>();
+            list = new LinkedList<>();
             mapElements[hashCode] = list;
             list.add(keyValue);
             return;
@@ -23,10 +23,9 @@ public class HashMap {
     }
 
 
-    private void checkIfContainsKey(LinkedList list, String key) {
-        for (Object object: list) {
-            KeyValue kV = (KeyValue) object;
-            if (kV.key.equals(key)) {
+    private void checkIfContainsKey(LinkedList<KeyValue> list, String key) {
+        for (KeyValue keyValue: list) {
+            if (keyValue.key.equals(key)) {
                 throw new IllegalStateException("Key already in map!");
             }
         }
@@ -35,7 +34,7 @@ public class HashMap {
 
     public String toString() {
         StringBuilder sB = new StringBuilder("[");
-        for (LinkedList list: mapElements) {
+        for (LinkedList<KeyValue> list: mapElements) {
             if (list != null) {
                 addElementsToStringBuilder(sB, list);
             }
@@ -46,9 +45,8 @@ public class HashMap {
     }
 
 
-    private void addElementsToStringBuilder(StringBuilder sB, LinkedList list) {
-        for (Object object: list) {
-            KeyValue keyValue = (KeyValue) object;
+    private void addElementsToStringBuilder(StringBuilder sB, LinkedList<KeyValue> list) {
+        for (KeyValue keyValue: list) {
             sB.append(String.format(" %s,", keyValue.toString()));
         }
     }
@@ -64,9 +62,6 @@ public class HashMap {
 
     public static void main(String[] args) {
         HashMap map = new HashMap();
-        map.add("Klucz", 0);
-        map.add("klucz", 1);
-        map.add("Klucz1", 2);
         map.add("Susan", 3);
         map.add("Juliet", 4);
         map.add("Simon", 5);
