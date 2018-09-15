@@ -1,8 +1,6 @@
 package com.codecool.map;
 
-import java.security.Key;
 import java.util.LinkedList;
-import java.util.List;
 
 public class HashMap {
     private int bucketSize = 16;
@@ -11,8 +9,8 @@ public class HashMap {
     private LinkedList<KeyValue>[] mapElements = new LinkedList[bucketSize];
 
     public void add(String key, Integer value) {
-        KeyValue keyValue = new KeyValue(key, value);
         int hashCode = Math.abs(key.hashCode() % 16);
+        KeyValue keyValue = new KeyValue(key, value);
         LinkedList list = mapElements[hashCode];
         if (list == null) {
             list = new LinkedList<KeyValue>();
@@ -20,13 +18,18 @@ public class HashMap {
             list.add(keyValue);
             return;
         }
+        checkIfContainsKey(list, key);
+        list.add(keyValue);
+    }
+
+
+    private void checkIfContainsKey(LinkedList list, String key) {
         for (Object object: list) {
             KeyValue kV = (KeyValue) object;
             if (kV.key.equals(key)) {
                 throw new IllegalStateException("Key already in map!");
             }
         }
-        list.add(keyValue);
     }
 
 
