@@ -32,6 +32,19 @@ public class HashMap {
     }
 
 
+    public Integer get(String key) {
+        int hashCode = Math.abs(key.hashCode() % 16);
+        LinkedList<KeyValue> list = mapElements[hashCode];
+
+        for (KeyValue keyValue: list) {
+            if (keyValue.key.equals(key)) {
+                return keyValue.value;
+            }
+        }
+        return null;
+    }
+
+
     public String toString() {
         StringBuilder sB = new StringBuilder("[");
         for (LinkedList<KeyValue> list: mapElements) {
@@ -67,5 +80,7 @@ public class HashMap {
         map.add("Simon", 5);
         map.add("John", 6);
         System.out.println(map);
+        System.out.println(map.get("Juliet"));
+        System.out.println(map.get("John"));
     }
 }
