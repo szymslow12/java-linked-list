@@ -32,7 +32,7 @@ public class HashMap {
     }
 
 
-    public Integer get(String key) {
+    public Integer getValue(String key) {
         int hashCode = Math.abs(key.hashCode() % 16);
         LinkedList<KeyValue> list = mapElements[hashCode];
 
@@ -80,7 +80,7 @@ public class HashMap {
         map.add("Simon", 5);
         map.add("John", 6);
         System.out.println(map);
-        System.out.println(map.get("Juliet"));
-        System.out.println(map.get("John"));
+        System.out.println(map.getValue("Juliet"));
+        System.out.println(map.getValue("John"));
     }
 }
