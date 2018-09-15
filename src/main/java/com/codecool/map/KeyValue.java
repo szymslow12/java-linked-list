@@ -1,11 +1,11 @@
 package com.codecool.map;
 
-public class KeyValue {
+public class KeyValue<K, V> {
 
-    public String key;
-    public Integer value;
+    public K key;
+    public V value;
 
-    public KeyValue(String key, Integer value) {
+    public KeyValue(K key, V value) {
         this.key = key;
         this.value = value;
     }

@@ -2,16 +2,16 @@ package com.codecool.map;
 
 import java.util.LinkedList;
 
-public class HashMap {
+public class HashMap<K, V> {
     private int bucketSize = 16;
 
     @SuppressWarnings("unchecked")
-    private LinkedList<KeyValue>[] mapElements = new LinkedList[bucketSize];
+    private LinkedList<KeyValue<K, V>>[] mapElements = new LinkedList[bucketSize];
 
-    public void add(String key, Integer value) {
+    public void add(K key, V value) {
         int hashCode = Math.abs(key.hashCode() % 16);
         KeyValue keyValue = new KeyValue(key, value);
-        LinkedList<KeyValue> list = mapElements[hashCode];
+        LinkedList<KeyValue<K, V>> list = mapElements[hashCode];
         if (list == null) {
             list = new LinkedList<>();
             mapElements[hashCode] = list;
@@ -23,7 +23,7 @@ public class HashMap {
     }
 
 
-    private void checkIfContainsKey(LinkedList<KeyValue> list, String key) {
+    private void checkIfContainsKey(LinkedList<KeyValue<K, V>> list, K key) {
         for (KeyValue keyValue: list) {
             if (keyValue.key.equals(key)) {
                 throw new IllegalStateException("Key already in map!");
@@ -32,9 +32,9 @@ public class HashMap {
     }
 
 
-    public Integer getValue(String key) {
+    public Object getValue(K key) {
         int hashCode = Math.abs(key.hashCode() % 16);
-        LinkedList<KeyValue> list = mapElements[hashCode];
+        LinkedList<KeyValue<K, V>> list = mapElements[hashCode];
 
         for (KeyValue keyValue: list) {
             if (keyValue.key.equals(key)) {
@@ -47,7 +47,10 @@ public class HashMap {
 
     public void remove(String key) {
         int hashCode = Math.abs(key.hashCode() % 16);
-        LinkedList<KeyValue> list = mapElements[hashCode];
+        LinkedList<KeyValue<K, V>> list = mapElements[hashCode];
+        if (list == null) {
+            throw new IllegalStateException("Tried remove not exist element!");
+        }
         for (KeyValue keyValue: list) {
             if (keyValue.key.equals(key)) {
                 list.remove(keyValue);
@@ -63,7 +66,7 @@ public class HashMap {
 
     public String toString() {
         StringBuilder sB = new StringBuilder("[");
-        for (LinkedList<KeyValue> list: mapElements) {
+        for (LinkedList<KeyValue<K, V>> list: mapElements) {
             if (list != null) {
                 addElementsToStringBuilder(sB, list);
             }
@@ -74,7 +77,7 @@ public class HashMap {
     }
 
 
-    private void addElementsToStringBuilder(StringBuilder sB, LinkedList<KeyValue> list) {
+    private void addElementsToStringBuilder(StringBuilder sB, LinkedList<KeyValue<K, V>> list) {
         for (KeyValue keyValue: list) {
             sB.append(String.format(" %s,", keyValue.toString()));
         }
@@ -92,14 +95,16 @@ public class HashMap {
 
 
     public static void main(String[] args) {
-        HashMap map = new HashMap();
-        map.add("Susan", 3);
-        map.add("Juliet", 4);
-        map.add("Simon", 5);
-        map.add("John", 6);
-        System.out.println(map.getValue("Juliet"));
-        System.out.println(map.getValue("John"));
-        map.remove("John");
+        HashMap<String, Integer> map = new HashMap();
+        map.add("SusanAge", 31);
+        map.add("JulietAge", 42);
+        map.add("SimonAge", 53);
+        map.add("JohnAge", 64);
+        System.out.println(map);
+        System.out.println("Juliet age = " + map.getValue("JulietAge"));
+        System.out.println("John age = " + map.getValue("JohnAge"));
+        map.remove("JohnAge");
+        System.out.println(map);
         map.clearAll();
         System.out.println(map);
     }
