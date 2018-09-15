@@ -55,6 +55,11 @@ public class HashMap {
         }
     }
 
+    @SuppressWarnings("unchecked")
+    public void clearAll() {
+        mapElements = new LinkedList[bucketSize];
+    }
+
 
     public String toString() {
         StringBuilder sB = new StringBuilder("[");
@@ -79,8 +84,10 @@ public class HashMap {
     private void clearString(StringBuilder sB) {
         int commaIndex = sB.lastIndexOf(",");
         int spaceIndex = sB.indexOf(" ");
-        sB.deleteCharAt(commaIndex);
-        sB.deleteCharAt(spaceIndex);
+        if (commaIndex >= 0 && spaceIndex >= 0) {
+            sB.deleteCharAt(commaIndex);
+            sB.deleteCharAt(spaceIndex);
+        }
     }
 
 
@@ -93,6 +100,7 @@ public class HashMap {
         System.out.println(map.getValue("Juliet"));
         System.out.println(map.getValue("John"));
         map.remove("John");
+        map.clearAll();
         System.out.println(map);
     }
 }
